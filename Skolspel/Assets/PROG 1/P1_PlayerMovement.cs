@@ -5,6 +5,7 @@ public class P1_PlayerMovement : MonoBehaviour
 {
     [SerializeField] private InputActionReference controls;
     [SerializeField] private float speed;
+    [SerializeField] private float smoothness;
 
     private float currentSpeedX = 0f;
     private float currentSpeedY = 0f;
@@ -16,8 +17,8 @@ public class P1_PlayerMovement : MonoBehaviour
 
         input *= speed * Time.deltaTime;
 
-        currentSpeedX = Mathf.Lerp(currentSpeedX, input.x, Time.deltaTime);
-        currentSpeedY = Mathf.Lerp(currentSpeedY, input.y, Time.deltaTime);
+        currentSpeedX = Mathf.Lerp(currentSpeedX, input.x, smoothness * Time.deltaTime);
+        currentSpeedY = Mathf.Lerp(currentSpeedY, input.y, smoothness * Time.deltaTime);
 
         transform.Translate(currentSpeedX, 0, currentSpeedY);
     }
