@@ -12,7 +12,6 @@ public class P1_PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
         Vector2 input = controls.action.ReadValue<Vector2>();
 
         input *= speed * Time.deltaTime;
