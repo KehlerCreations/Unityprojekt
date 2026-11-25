@@ -14,15 +14,8 @@ public class T_FP_PlayerMovement : MonoBehaviour
     {
         Vector2 input = controls.action.ReadValue<Vector2>();
 
-        Vector3 forward = cameraTransform.forward;
-        Vector3 right = cameraTransform.right;
+        Vector3 delta = new Vector3(input.x, 0f, input.y);
 
-        forward.y = 0f;
-        right.y = 0f;
-
-        Vector3 movement = (forward * input.y) + (right * input.x);
-        movement.Normalize();
-
-        transform.Translate(movement * speed * Time.deltaTime);
+        transform.Translate(delta * speed * Time.deltaTime);
     }
 }
