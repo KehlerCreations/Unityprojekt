@@ -19,6 +19,6 @@ public class P1_PlayerMovement : MonoBehaviour
         currentSpeedX = Mathf.Lerp(currentSpeedX, input.x, smoothness * Time.deltaTime);
         currentSpeedY = Mathf.Lerp(currentSpeedY, input.y, smoothness * Time.deltaTime);
 
-        transform.Translate(currentSpeedX, 0, currentSpeedY);
+        transform.Translate(currentSpeedX, 0, currentSpeedY, Space.Self);
     }
 }

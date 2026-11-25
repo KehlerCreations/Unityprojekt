@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class P1_CameraRotation : MonoBehaviour
 {
+    [SerializeField] private Transform playerTransform;
     [SerializeField] private InputActionReference controls;
     [SerializeField] private float rotationSpeed;
 
@@ -16,10 +17,16 @@ public class P1_CameraRotation : MonoBehaviour
 
         angles.y += input.x;
         angles.x -= input.y;
-        angles.x = Mathf.Clamp(angles.x, -90, 90);
+        angles.x = Mathf.Clamp(angles.x, -18, 90);
 
-        Vector3 rotation = new Vector3(angles.x, angles.y, 0f);
+        Vector3 cameraRotation = new Vector3(angles.x, angles.y, 0f);
+        Vector3 playerRotation = new Vector3(0f, angles.y, 0f);
 
-        transform.rotation = Quaternion.Euler(rotation);
+        playerTransform.rotation = Quaternion.Euler(playerRotation);
+        transform.localRotation = Quaternion.Euler(cameraRotation);
+
+        transform.position = playerTransform.position;
+
+
     }
 }
